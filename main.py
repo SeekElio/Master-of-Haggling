@@ -16,13 +16,13 @@
 4.玩家第二次输入价格进行报价
 *画面:价格，成本，建议出价，出价输入框
 5.如此往复4次
-6.如果在5次内成交，游戏胜利;如果5次仍未达成游戏，游戏结束。
+6.如果在5次内成交,游戏胜利;如果5次仍未达成游戏,游戏结束。
 '''
 
 '''
 创建一个角色Customer
 3个属性:出价，剩余次数，推荐出价
-功能：为商品出价，
+4个功能：为商品出价，提示剩余次数，设置建议价格，输出建议价格
 '''
 class Customer:
     def _init_(self,bid,remaining_times,suggested_bid):
@@ -31,15 +31,27 @@ class Customer:
         self.suggested_bid = suggested_bid
 '''
 创建一个角色Merchant
-2个属性:保留价格，交易是否完成(Boolean)
+1个属性:保留价格
+2个功能：设置保留价格，获取保留价格
 '''
 class Merchant:
-    def _init_(self,reservation_price,isTransactionContinue):
+    def _init_(self,reservation_price):
         self.reservation_price = reservation_price
-        self.isTransactionContinue = isTransactionContinue
-        
+'''
+创建一个父级抽象类（ADT class）创建接口
+并在其子类中实现具体逻辑
+'''
+class Product:
+    def _init_(self,cost,price):
+        self.cost = cost
+        self,price = price
+#class Name(Product):
+
+isTransactionContinue = True       
 customer = Customer()
 merchant = Merchant()
+
+
 
 #前端设计师 Sze-To TSZ KIN
 
