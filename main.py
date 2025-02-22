@@ -19,24 +19,47 @@
 6.如果在5次内成交,游戏胜利;如果5次仍未达成游戏,游戏结束。
 '''
 
+
+class Character():
+    def _init_(self,reservation_price):
+        self.reservation_price = reservation_price
+        
 '''
 创建一个角色Customer
 3个属性:出价，剩余次数，推荐出价
 4个功能：为商品出价，提示剩余次数，设置建议价格，输出建议价格
 '''
-class Customer:
-    def _init_(self,bid,remaining_times,suggested_bid):
-        self.bid = bid
+
+class Customer(Character):
+    def _init_(self,reservation_price,remaining_times,suggested_bid):
+        super().__init__(reservation_price)
         self.remaining_times = remaining_times
         self.suggested_bid = suggested_bid
+
+    def bid(self):
+        try:
+            reservation_price = int(input("Enter my bid:"))
+            return reservation_price
+        except ValueError:
+            return("The input is not an integer!")
+    def remind_remaining_times(self):
+        return "f'Remaining times:{self.remaining_time}"
+    def set_suggested_price(self):
+        #TODO 使用二分查找算法 
+        return self.suggested_price
+    def get_suggested_price(self):
+        return self.suggested_price
 '''
 创建一个角色Merchant
 1个属性:保留价格
-2个功能：设置保留价格，获取保留价格
+1个方法：决策保留价格
 '''
-class Merchant:
-    def _init_(self,reservation_price):
-        self.reservation_price = reservation_price
+class Merchant(Character):
+    def  _init_(self,reservation_price):
+        super().__init__(reservation_price)
+    def decide_revervation_price(self):
+        #TODO 使用决策树
+        return self.reservation_price
 '''
 创建一个父级抽象类（ADT class）创建接口
 并在其子类中实现具体逻辑
@@ -51,6 +74,7 @@ isTransactionContinue = True
 customer = Customer()
 merchant = Merchant()
 
+customer.bid()
 
 
 #前端设计师 Sze-To TSZ KIN
